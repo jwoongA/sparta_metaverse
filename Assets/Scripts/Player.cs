@@ -28,6 +28,19 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        // MainScene으로 이동하면 저장된 값들을 불러오기
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            float x = PlayerPrefs.GetFloat("PlayerPosX", transform.position.x);
+            float y = PlayerPrefs.GetFloat("PlayerPosY", transform.position.y);
+            float z = PlayerPrefs.GetFloat("PlayerPosZ", transform.position.z);
+
+            transform.position = new Vector3(x, y, z);
+        }
+    }
+
     // 물리 기반 이동 처리 (이동 방향 * 속도, 점프는 y축 그대로 유지)
     private void FixedUpdate()
     {
@@ -62,7 +75,12 @@ public class Player : MonoBehaviour
         // F 키가 눌렸고, 상호작용 가능한 오브젝트가 범위 안에 있을 경우
         if (inputValue.isPressed && currentInteract != null && currentInteract.playerInRange)
         {
-            Debug.Log("상호작용 실행");
+            // 플레이어 위치 저장
+            Vector3 pos = transform.position;
+            PlayerPrefs.SetFloat("PlayerPosX", pos.x);
+            PlayerPrefs.SetFloat("PlayerPosY", pos.y);
+            PlayerPrefs.SetFloat("PlayerPosz", pos.z);
+            PlayerPrefs.Save();
 
             switch (currentInteract.minigameType)
             {

@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        // 게임이 시작될 때 재시작 UI 끄기
         restartText.gameObject.SetActive(false);
     }
 
