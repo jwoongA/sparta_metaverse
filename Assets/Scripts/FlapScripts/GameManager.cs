@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     static GameManager gameManager;
+
+    public GameObject startUI;
+
+    private bool isGameStarted = false;
 
     public static GameManager Instance
     {
@@ -29,7 +35,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0f;
+        startUI.SetActive(true);
         uiManager.UpdateScore(0);
+    }
+
+    public void StartGame()
+    {
+        if (isGameStarted) return;
+
+        isGameStarted = true;
+        Time.timeScale = 1f;
+        startUI.SetActive(false);
     }
 
     public void GameOver()

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/FlapScene.unity
+    guid: 1c6fa60941ab30947bacbaa4910ec46d
   m_configObjects: {}

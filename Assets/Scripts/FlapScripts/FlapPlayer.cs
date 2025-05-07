@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FlapPlayer : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class FlapPlayer : MonoBehaviour
 
     void Update()
     {
+
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         if (isDead)
         {
             if (deathCooldown <= 0)
