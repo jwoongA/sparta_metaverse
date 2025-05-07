@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI restartText;
 
+    public GameObject scoreUI;
+    public TextMeshProUGUI highScoreText;
+    public TextMeshProUGUI currentScoreText;
+
     public void Start()
     {
         if (restartText == null)
@@ -35,4 +39,18 @@ public class UIManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    public void ShowScore(int score)
+    {
+        scoreUI.SetActive(true);
+
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (score >  highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
+
+        highScoreText.text = highScore.ToString();
+        currentScoreText.text = score.ToString();
+    }
 }

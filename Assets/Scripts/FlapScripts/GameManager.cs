@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
+        uiManager.ShowScore(currentScore);
         uiManager.SetRestart();
     }
 
@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
     {
         currentScore += score;
         uiManager.UpdateScore(currentScore);
-        Debug.Log("Score: " + currentScore);
     }
 
     public void ExitGame()
