@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
     }
 }
